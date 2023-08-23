@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:42:35 by mnegro            #+#    #+#             */
-/*   Updated: 2023/08/23 19:58:03 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/08/23 20:35:38 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 	but it will manage only the following conversions: s (string),
 	d (decimal), x (lowercase hexademical) */
 
-# include <stdarg.h>
-# include <unistd.h>
+#include <limits.h>
+#include <stdarg.h>
+#include <unistd.h>
 
 int	ft_fmt_s(char *s)
 {
@@ -29,14 +30,40 @@ int	ft_fmt_s(char *s)
 	return (i);
 }
 
-int	ft_fmt_d()
+void	ft_putnbr(int n, int base, int *len)
 {
-	
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+		*len += 1;
+	}
+	else if (n >= base)
+	{
+		ft_putnbr(n / base, base);
+		ft_putnbr(n % base, base);
+	}
+	else
+		write(1, n + 48, 1);
+		*len += 1;
 }
 
-int	ft_fmt_x()
+int	ft_fmt_d(int d)
 {
-	
+	int	len;
+
+	len = 0;
+	ft_putnbr(d, 10, &len);
+	return (len);
+}
+
+int	ft_fmt_x(int x)
+{
+	int	len;
+
+	len = 0;
+	ft_putnbr(x, 16, &len);
+	return (len);
 }
 
 int	ft_formats(va_list ap, const char last)
