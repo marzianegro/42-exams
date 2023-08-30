@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:42:35 by mnegro            #+#    #+#             */
-/*   Updated: 2023/08/23 20:35:38 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/08/30 11:59:20 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,41 @@
 	but it will manage only the following conversions: s (string),
 	d (decimal), x (lowercase hexademical) */
 
-#include <limits.h>
 #include <stdarg.h>
+#include <stdio.h>
 #include <unistd.h>
 
-int	ft_fmt_s(char *s)
+int	ft_strlen(char *str)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	if (!s)
-		write(1, "(null)", 6);
-	while (s && s[1])
-		write(1, &s[i++], 1);
-	return (i);
+	len = 0;
+	while (str && str[len])
+		len++;
+	return (len);
 }
 
-void	ft_putnbr(int n, int base, int *len)
+void	ft_putstr(char *str, int *len)
 {
-	if (n < 0)
+	if (!str)
+		str = "(null)";
+	while (str && *str)
+		*len += write(1, str++, 1);
+}
+
+void	ft_putnbr_base(int nbr, char *base, int *len)
+{
+	int	base_len;
+	
+	base_len = ft_strlen(base);
+	if (nbr < 0)
 	{
-		write(1, "-", 1);
-		n = -n;
-		*len += 1;
+		*len += write(1, "-", 1);
+		nbr = -nbr;
 	}
-	else if (n >= base)
-	{
-		ft_putnbr(n / base, base);
-		ft_putnbr(n % base, base);
-	}
-	else
-		write(1, n + 48, 1);
-		*len += 1;
-}
-
-int	ft_fmt_d(int d)
-{
-	int	len;
-
-	len = 0;
-	ft_putnbr(d, 10, &len);
-	return (len);
-}
-
-int	ft_fmt_x(int x)
-{
-	int	len;
-
-	len = 0;
-	ft_putnbr(x, 16, &len);
-	return (len);
-}
-
-int	ft_formats(va_list ap, const char last)
-{
-	int	len;
-
-	len = 0;
-	if (last == 's')
-		len += ft_fmt_s(last);
-	else if (last == 'd')
-		len += ft_fmt_d(last);
-	else if (last == 'x')
-		len += ft_fmt_x(last);
-	return (len);
+	if (nbr >= base_len)
+		ft_putnbr_base(nbr / base_len, base, len);
+	*len += write(1, &base[nbr % base_len], 1);
 }
 
 int	ft_printf(const char *last, ...)
@@ -92,9 +63,28 @@ int	ft_printf(const char *last, ...)
 	while (last[i])
 	{
 		if (last[i] == '%')
-			len += ft_formats(ap, last[i + 1]);
+		{
+			i++;
+			if (last[i] == 's')
+				ft_putstr(va_arg(ap, char *), &len);
+			else if (last[i] == 'd')
+				ft_putnbr_base((long int)va_arg(ap, int), "0123456789", &len);
+			else if (last[i] == 'x')
+				ft_putnbr_base((long int)va_arg(ap, int), "0123456789abcdef", &len);
+		}
+		else
+			len += write(1, &last[i], 1);
 		i++;
 	}
 	va_end(ap);
 	return (len);
+}
+
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	printf("Mine: %d\n", ft_printf("%d\n", 42));
+	printf("OG: %d\n", printf("%d\n", 42));
+	return (0);
 }
