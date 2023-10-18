@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:24:41 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/18 11:57:36 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:24:11 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,44 @@ int	exec(char **argv, char **envp, int i)
 	flag_pipe = 0;
 	if (argv[i] && !strcmp(argv[i], "|"))
 		flag_pipe = 1;
+	if (*argv && !strcmp(*argv, "|") || !strcmp(*argv, ";"))
+		return (0);
+	if (flag_pipe && pipe(fd) == -1)
+		return (err("error: fatal\n"));
+	pid = fork();
+	if (!pid)
+	{
+		argv[i] = 0;
+		if (flag_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+			return (err("error: fatal\n"));
+		execve(*argv, argv, envp);
+		return (err("error: cannot execute "), err(*argv), err("\n"));
+	}
+	waitpid(pid, &status, 0);
+	if (flag_pipe && (dup2(fd[0], 0) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+		return (err("error: fatal\n"));
+	return (WIFEXITED(status) && WEXITSTATUS(status));
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	int	i;
+	int	status;
+
+	i = 0;
+	status = 0;
+	if (argc == 1)
+		return (status);
+	while (argv[i] && argv[++i])
+	{
+		argv += i;
+		i = 0;
+		while (argv[i] && strcmp(argv[i], "|") && strcmp(argv[i], ";"))
+			i++;
+		if (!strcmp(*argv, "cd"))
+			status = cd(argv, i);
+		else if (i)
+			status = exec(argv, envp, i);
+	}
+	return (status);
 }
