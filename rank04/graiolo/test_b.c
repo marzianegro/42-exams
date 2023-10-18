@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   microshell.c                                       :+:      :+:    :+:   */
+/*   test_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 11:24:41 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/18 13:40:50 by mnegro           ###   ########.fr       */
+/*   Created: 2023/10/18 13:26:20 by mnegro            #+#    #+#             */
+/*   Updated: 2023/10/18 13:40:49 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	cd(char **argv, int i)
 {
 	if (i != 2)
 		return (err("error: cd: bad arguments\n"));
-	else if (chdir(argv[1]) == -1)
+	else if (chdir(argv[i]) == -1)
 		return (err("error: cd: cannot change directory to "), err(argv[1]), err("\n"));
 	return (0);
 }
@@ -46,7 +46,7 @@ int	exec(char **argv, char **envp, int i)
 	if (!pid)
 	{
 		argv[i] = 0;
-		if (flag_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+		if (flag_pipe && (dup2(fd[1], 1) == -1 || close(fd[0]) == -1) || close(fd[1]) == -1)
 			return (err("error: fatal\n"));
 		execve(*argv, argv, envp);
 		return (err("error: cannot execute "), err(*argv), err("\n"));
@@ -70,7 +70,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		argv += i;
 		i = 0;
-		while (argv[i] && strcmp(argv[i], "|") && strcmp(argv[i], ";"))
+		while (argv[i] && !strcmp(argv[i], "|") && !strcmp(argv[i], ";"))
 			i++;
 		if (!strcmp(*argv, "cd"))
 			status = cd(argv, i);
