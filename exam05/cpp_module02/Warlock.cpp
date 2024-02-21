@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:40:36 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 13:00:55 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:37:21 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,17 @@ void	Warlock::introduce() const {
 }
 
 void	Warlock::learnSpell(ASpell* obj) {
-	if (obj) {
-		spellBook[obj->getName()] = obj;
-	}
+	spellBook.learnSpell(obj);
 }
 
 void	Warlock::forgetSpell(const std::string spell) {
-	std::map<std::string, ASpell*>::iterator it;
-
-	it = spellBook.find(spell);
-	if (it != spellBook.end()) {
-		spellBook.erase(it);
-	}
+	spellBook.forgetSpell(spell);
 }
 
 void	Warlock::launchSpell(const std::string spell, const ATarget& obj) {
-	std::map<std::string, ASpell*>::iterator it;
+	ASpell	*tmp = spellBook.createSpell(spell);
 
-	it = spellBook.find(spell);
-	if (it != spellBook.end()) {
-		it->second->launch(obj);
+	if (tmp) {
+		tmp->launch(obj);
 	}
 }

@@ -6,14 +6,14 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:17:12 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 12:54:47 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:52:38 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ATarget.hpp"
 #include <iostream>
+#include "ATarget.hpp"
 
 class	ATarget;
 

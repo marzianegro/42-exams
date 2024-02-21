@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:40:33 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 13:00:57 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:52:37 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 #include "ATarget.hpp"
 #include <iostream>
 #include <map>
-
-class	ASpell;
-class	ATarget;
+#include "SpellBook.hpp"
 
 class	Warlock {
 
@@ -45,5 +43,5 @@ private:
 	
 	std::string	name;
 	std::string	title;
-	std::map<std::string, ASpell*>	spellBook;
+	SpellBook	spellBook;
 };

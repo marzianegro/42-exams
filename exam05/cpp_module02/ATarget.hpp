@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:32:15 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 12:56:15 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:52:38 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "ASpell.hpp"
 #include <iostream>
-#include "Warlock.hpp"
 
 class	ASpell;
 
