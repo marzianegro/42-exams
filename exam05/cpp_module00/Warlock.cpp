@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:40:36 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 11:15:09 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:18:44 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ const std::string&	Warlock::getTitle() const {
 	return (title);
 }
 
-void	Warlock::setTitle(const std::string& newTitle) {
+void	Warlock::setTitle(const std::string &newTitle) {
 	title = newTitle;
 }
 

@@ -6,13 +6,12 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:32:15 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:52:38 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:44:21 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ASpell.hpp"
 #include <iostream>
 
 class	ASpell;
@@ -31,7 +30,7 @@ public:
 
 	virtual ATarget*	clone() const = 0;
 
-	void	getHitBySpell(const ASpell &obj) const;
+	void	getHitBySpell(const ASpell &spell) const;
 
 protected:
 	std::string	type;

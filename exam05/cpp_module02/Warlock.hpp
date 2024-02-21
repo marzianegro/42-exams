@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:40:33 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:52:37 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:32:37 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ public:
 
 	void	introduce() const;
 
-	void	learnSpell(ASpell* obj);
+	void	learnSpell(ASpell *spell);
 	void	forgetSpell(const std::string spell);
-	void	launchSpell(const std::string spell, const ATarget& obj);
+	void	launchSpell(const std::string spell, const ATarget& tgt);
 
 private:
 	Warlock(); // ocf constructor

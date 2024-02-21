@@ -6,11 +6,12 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:57:52 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 12:55:18 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:36:41 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ASpell.hpp"
+#include "ATarget.hpp"
 
 ASpell::ASpell() {
 };
@@ -41,6 +42,6 @@ const std::string&	ASpell::getEffects() const {
 	return (effects);
 }
 
-void	ASpell::launch(const ATarget &obj) const {
-	obj.getHitBySpell(*this);
+void	ASpell::launch(const ATarget &tgt) const {
+	tgt.getHitBySpell(*this);
 }

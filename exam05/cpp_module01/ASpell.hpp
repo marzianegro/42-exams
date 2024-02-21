@@ -6,13 +6,12 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:17:12 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 12:54:47 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:36:13 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ATarget.hpp"
 #include <iostream>
 
 class	ATarget;
@@ -32,7 +31,7 @@ public:
 
 	virtual ASpell*	clone() const = 0;
 
-	void	launch(const ATarget& obj) const;
+	void	launch(const ATarget &tgt) const;
 
 protected:
 	std::string	name;

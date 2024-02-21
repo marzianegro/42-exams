@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:02:40 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:52:37 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:30:32 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	SpellBook(); // ocf constructor
 	~SpellBook(); // ocf destructor
 
-	void	learnSpell(ASpell* spell);
+	void	learnSpell(ASpell *spell);
 	void	forgetSpell(const std::string &spell);
 	ASpell*	createSpell(const std::string &spell);
 

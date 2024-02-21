@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:28:18 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:40:49 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:33:05 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void		TargetGenerator::learnTargetType(ATarget *tgt) {
 	}
 }
 
-void		TargetGenerator::forgetTargetType(const std::string &type) {
-	std::map<std::string, ATarget*>::iterator it = targetType.find(type);
+void		TargetGenerator::forgetTargetType(const std::string &tgt) {
+	std::map<std::string, ATarget*>::iterator it = targetType.find(tgt);
 
 	if (it != targetType.end()) {
 		targetType.erase(it);
 	}
 }
 
-ATarget*	TargetGenerator::createTarget(const std::string &type) {
-	std::map<std::string, ATarget*>::iterator it = targetType.find(type);
+ATarget*	TargetGenerator::createTarget(const std::string &tgt) {
+	std::map<std::string, ATarget*>::iterator it = targetType.find(tgt);
 
 	if (it != targetType.end()) {
-		return (targetType[type]);
+		return (targetType[tgt]);
 	}
 	return (NULL);
 }

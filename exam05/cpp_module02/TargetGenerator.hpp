@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:24:59 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:34:43 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:46:36 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "ATarget.hpp"
 #include <iostream>
 #include <map>
-
-class	ATarget;
 
 class	TargetGenerator {
 
@@ -27,8 +25,8 @@ public:
 	TargetGenerator&	operator=(const TargetGenerator &src); // ocf copy assignment operator
 
 	void		learnTargetType(ATarget *tgt);
-	void		forgetTargetType(const std::string &type);
-	ATarget*	createTarget(const std::string &type);
+	void		forgetTargetType(const std::string &tgt);
+	ATarget*	createTarget(const std::string &tgt);
 
 private:
 	TargetGenerator(const TargetGenerator &src); // ocf copy constructor

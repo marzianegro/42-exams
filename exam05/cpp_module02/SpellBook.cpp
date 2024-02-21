@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:07:25 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 15:52:36 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:30:42 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ SpellBook&	SpellBook::operator=(const SpellBook &src) {
 	return (*this);
 }
 
-void	SpellBook::learnSpell(ASpell* spell) {
+void	SpellBook::learnSpell(ASpell *spell) {
 	if (spell) {
 		spellBook[spell->getName()] = spell->clone();
 	}

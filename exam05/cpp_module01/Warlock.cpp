@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:40:36 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/21 13:00:55 by mnegro           ###   ########.fr       */
+/*   Updated: 2024/02/21 16:27:06 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ const std::string&	Warlock::getTitle() const {
 	return (title);
 }
 
-void	Warlock::setTitle(const std::string& newTitle) {
+void	Warlock::setTitle(const std::string &newTitle) {
 	title = newTitle;
 }
 
@@ -50,9 +50,9 @@ void	Warlock::introduce() const {
 	std::cout << name << ": I am " << name << ", " << title << "!\n";
 }
 
-void	Warlock::learnSpell(ASpell* obj) {
-	if (obj) {
-		spellBook[obj->getName()] = obj;
+void	Warlock::learnSpell(ASpell *spell) {
+	if (spell) {
+		spellBook[spell->getName()] = spell;
 	}
 }
 
@@ -65,11 +65,11 @@ void	Warlock::forgetSpell(const std::string spell) {
 	}
 }
 
-void	Warlock::launchSpell(const std::string spell, const ATarget& obj) {
+void	Warlock::launchSpell(const std::string spell, const ATarget &tgt) {
 	std::map<std::string, ASpell*>::iterator it;
 
 	it = spellBook.find(spell);
 	if (it != spellBook.end()) {
-		it->second->launch(obj);
+		it->second->launch(tgt);
 	}
 }
