@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Polymorph.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:03:10 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:39 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:28:31 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 16:29:04 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Polymorph.hpp"
+#include "ASpell.hpp"
+#include "ATarget.hpp"
+#include "Dummy.hpp"
+#include "Fwoosh.hpp"
+#include "Warlock.hpp"
 
-Polymorph::Polymorph() {
-	this->name = "Polymorph";
-	this->effects = "turned into a critter";
-};
+int main()
+{
+  Warlock richard("Richard", "the Titled");
 
-Polymorph::~Polymorph() {
-}
+  Dummy bob;
+  Fwoosh* fwoosh = new Fwoosh();
 
-ASpell*	Polymorph::clone() const {
-	return (new Polymorph());
+  richard.learnSpell(fwoosh);
+
+  richard.introduce();
+  richard.launchSpell("Fwoosh", bob);
+
+  richard.forgetSpell("Fwoosh");
+  richard.launchSpell("Fwoosh", bob);
 }

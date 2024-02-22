@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Polymorph.cpp                                      :+:      :+:    :+:   */
+/*   Fireball.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:03:10 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:39 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:43:40 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:27:55 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Polymorph.hpp"
+#include "Fireball.hpp"
 
-Polymorph::Polymorph() {
-	this->name = "Polymorph";
-	this->effects = "turned into a critter";
-};
-
-Polymorph::~Polymorph() {
+Fireball::Fireball() {
+	this->name = "Fireball";
+	this->effects = "burnt to a crisp";
 }
 
-ASpell*	Polymorph::clone() const {
-	return (new Polymorph());
+Fireball::~Fireball() {
+}
+
+ASpell*	Fireball::clone() const {
+	return (new Fireball());
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:24:59 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:30:57 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:57:26 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:05:26 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 class	TargetGenerator {
 
 public:
-	TargetGenerator(); // ocf constructor
-	~TargetGenerator(); // ocf destructor
-
-	TargetGenerator&	operator=(const TargetGenerator &src); // ocf copy assignment operator
+	TargetGenerator();
+	~TargetGenerator();
 
 	void		learnTargetType(ATarget *tgt);
 	void		forgetTargetType(const std::string &tgt);
 	ATarget*	createTarget(const std::string &tgt);
 
 private:
-	TargetGenerator(const TargetGenerator &src); // ocf copy constructor
+	TargetGenerator(const TargetGenerator &src);
 
-	std::map<std::string, ATarget*>	targetType;
+	TargetGenerator&	operator=(const TargetGenerator &src);
+
+	std::map<std::string, ATarget*>	targetBook;
 };

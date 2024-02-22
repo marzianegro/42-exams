@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Polymorph.cpp                                      :+:      :+:    :+:   */
+/*   Dummy.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:03:10 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:39 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:22:22 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:20:44 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Polymorph.hpp"
+#include "Dummy.hpp"
 
-Polymorph::Polymorph() {
-	this->name = "Polymorph";
-	this->effects = "turned into a critter";
-};
-
-Polymorph::~Polymorph() {
+Dummy::Dummy() {
+	type = "Target Practice Dummy";
 }
 
-ASpell*	Polymorph::clone() const {
-	return (new Polymorph());
+Dummy::~Dummy() {
+}
+
+ATarget*	Dummy::clone() const {
+	return (new Dummy());
 }

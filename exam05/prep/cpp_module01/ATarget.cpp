@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 12:04:04 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:19:17 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:13:01 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 16:36:24 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #include "ATarget.hpp"
 
 ATarget::ATarget() {
-};
-
-ATarget::ATarget(const std::string &newType) : type(newType) {
 }
 
 ATarget::ATarget(const ATarget &src) {
@@ -24,7 +21,7 @@ ATarget::ATarget(const ATarget &src) {
 }
 
 ATarget::~ATarget() {
-};
+}
 
 ATarget&	ATarget::operator=(const ATarget &src) {
 	if (this != &src) {
@@ -33,10 +30,13 @@ ATarget&	ATarget::operator=(const ATarget &src) {
 	return (*this);
 }
 
+ATarget::ATarget(const std::string &newType) : type(newType) {
+}
+
 const std::string&	ATarget::getType() const {
 	return (type);
 }
 
 void	ATarget::getHitBySpell(const ASpell &spell) const {
-	std::cout << type << " has been " << spell.getEffects() << "!\n";
+	std::cout << type << " has been " << spell.getEffects() << "\n";
 }

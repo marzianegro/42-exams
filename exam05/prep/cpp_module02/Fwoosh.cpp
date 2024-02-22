@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Polymorph.cpp                                      :+:      :+:    :+:   */
+/*   Fwoosh.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:03:10 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:39 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:19:37 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:28:56 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Polymorph.hpp"
+#include "Fwoosh.hpp"
 
-Polymorph::Polymorph() {
-	this->name = "Polymorph";
-	this->effects = "turned into a critter";
-};
-
-Polymorph::~Polymorph() {
+Fwoosh::Fwoosh() {
+	this->name = "Fwoosh";
+	this->effects = "fwooshed";
 }
 
-ASpell*	Polymorph::clone() const {
-	return (new Polymorph());
+Fwoosh::~Fwoosh() {
+}
+
+ASpell*	Fwoosh::clone() const {
+	return (new Fwoosh());
 }

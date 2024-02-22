@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Polymorph.cpp                                      :+:      :+:    :+:   */
+/*   BrickWall.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:03:10 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:39 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:44:55 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:26:59 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Polymorph.hpp"
+#include "BrickWall.hpp"
 
-Polymorph::Polymorph() {
-	this->name = "Polymorph";
-	this->effects = "turned into a critter";
-};
-
-Polymorph::~Polymorph() {
+BrickWall::BrickWall() {
+	this->type = "Incospicuous Red-brick Wall";
 }
 
-ASpell*	Polymorph::clone() const {
-	return (new Polymorph());
+BrickWall::~BrickWall() {
+}
+
+ATarget*	BrickWall::clone() const {
+	return (new BrickWall());
 }

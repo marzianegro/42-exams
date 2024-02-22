@@ -5,18 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 11:57:52 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:18:26 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:09:40 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 16:33:32 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ASpell.hpp"
 #include "ATarget.hpp"
+#include "ASpell.hpp"
 
 ASpell::ASpell() {
-};
-
-ASpell::ASpell(const std::string &newName, const std::string &newEffect) : name(newName), effects(newEffect) {
 }
 
 ASpell::ASpell(const ASpell &src) {
@@ -34,6 +31,10 @@ ASpell&	ASpell::operator=(const ASpell &src) {
 	return (*this);
 }
 
+ASpell::ASpell(const std::string &newName, const std::string &newEffects) : name(newName), effects(newEffects) {
+	std::cout << name << ": This looks like another boring day.\n";
+}
+
 const std::string&	ASpell::getName() const {
 	return (name);
 }
@@ -45,3 +46,4 @@ const std::string&	ASpell::getEffects() const {
 void	ASpell::launch(const ATarget &tgt) const {
 	tgt.getHitBySpell(*this);
 }
+

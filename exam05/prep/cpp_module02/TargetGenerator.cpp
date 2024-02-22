@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:28:18 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:31:50 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:57:23 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:31:49 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ TargetGenerator&	TargetGenerator::operator=(const TargetGenerator &src) {
 
 void		TargetGenerator::learnTargetType(ATarget *tgt) {
 	if (tgt) {
-		targetType[tgt->getType()] = tgt->clone();
+		targetBook[tgt->getType()] = tgt->clone();
 	}
 }
 
 void		TargetGenerator::forgetTargetType(const std::string &tgt) {
-	std::map<std::string, ATarget*>::iterator it = targetType.find(tgt);
+	std::map<std::string, ATarget*>::iterator	it = targetBook.find(tgt);
 
-	if (it != targetType.end()) {
-		targetType.erase(it);
+	if (it != targetBook.end()) {
+		targetBook.erase(it);
 	}
 }
 
 ATarget*	TargetGenerator::createTarget(const std::string &tgt) {
-	std::map<std::string, ATarget*>::iterator it = targetType.find(tgt);
+	std::map<std::string, ATarget*>::iterator	it = targetBook.find(tgt);
 
-	if (it != targetType.end()) {
-		return (targetType[tgt]);
+	if (it != targetBook.end()) {
+		return (targetBook[tgt]);
 	}
 	return (NULL);
 }

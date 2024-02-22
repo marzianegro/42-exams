@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SpellBook.hpp                                      :+:      :+:    :+:   */
+/*   Warlock.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:02:40 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:50:26 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 15:55:03 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 16:03:32 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ASpell.hpp"
 #include <iostream>
-#include <map>
 
-class	SpellBook {
+class	Warlock {
 
 public:
-	SpellBook(); // ocf constructor
-	~SpellBook(); // ocf destructor
+	Warlock(const std::string &newName, const std::string &newTitle);
+	~Warlock();
 
-	void	learnSpell(ASpell *spell);
-	void	forgetSpell(const std::string &spell);
-	ASpell*	createSpell(const std::string &spell);
+	const std::string&	getName(void) const;
+	const std::string&	getTitle(void) const;
+
+	void	setTitle(const std::string &newTitle);
+
+	void	introduce() const;
 
 private:
-	SpellBook(const SpellBook &src); // ocf copy constructor
+	Warlock();
+	Warlock(const Warlock &src);
 
-	SpellBook&	operator=(const SpellBook &src); // ocf copy assignment operator
+	Warlock&	operator=(const Warlock &src);
 
-	std::map<std::string, ASpell*>	spellBook;
+	std::string	name;
+	std::string	title;
 };

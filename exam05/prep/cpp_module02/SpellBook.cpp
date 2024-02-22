@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:07:25 by mnegro            #+#    #+#             */
-/*   Updated: 2024/02/22 17:13:17 by mnegro           ###   ########.fr       */
+/*   Created: 2024/02/22 16:46:05 by mnegro            #+#    #+#             */
+/*   Updated: 2024/02/22 17:18:30 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	SpellBook::learnSpell(ASpell *spell) {
 }
 
 void	SpellBook::forgetSpell(const std::string &spell) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spell);
+	std::map<std::string, ASpell*>::iterator	it = spellBook.find(spell);
 
 	if (it != spellBook.end()) {
 		spellBook.erase(it);
@@ -43,7 +43,7 @@ void	SpellBook::forgetSpell(const std::string &spell) {
 }
 
 ASpell*	SpellBook::createSpell(const std::string &spell) {
-	std::map<std::string, ASpell*>::iterator it = spellBook.find(spell);
+	std::map<std::string, ASpell*>::iterator	it = spellBook.find(spell);
 
 	if (it != spellBook.end()) {
 		return (spellBook[spell]);
