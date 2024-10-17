@@ -7,13 +7,19 @@
 #include <sys/socket.h> // definitions for sockets
 #include <unistd.h> // access to POSIX oeprating system API
 
-// STEPS
+// note: STEPS
 // 1. client structure and global variables
 // 2. function to send message to all clients
 // 3. argument check
 // 4. socket setup
 // 5. initialization
 // 6. main loop
+	// 6.1. initialization
+	// 6.2. handling readable FDs
+		// 6.2.1. handling new clients
+		// 6.2.2. handling data from existing clients
+			// 6.2.2.1 client has disconnected
+			// 6.2.2.2 process retrieved data
 
 typedef struct s_client {
 	int		id;
