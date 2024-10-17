@@ -71,10 +71,13 @@ int main(int ac, char **av){
     bzero(clients, sizeof(clients));
     // MAIN LOOP
     while (42) {
+        // INITIALIZATION
         w_set = mem_set; // monitoring writable fds
         r_set = mem_set; // monitoring readable fds
         if (select(fd_max + 1, &r_set, &w_set, NULL, NULL) < 0) // monitor multiple fds for readability and writability
+            // note: wait for any of the fds to become ready for reading/writing + update r_set and w_set to indicate which fds are ready
             continue ; // on failure
+        // HANDLING READBALE FDS
         for (int fd_i = 0; fd_i <= fd_max; fd_i++) {
             if (FD_ISSET(fd_i, &r_set)) { // check if fd is in read set
                 if (fd_i == sockfd) {
@@ -87,8 +90,8 @@ int main(int ac, char **av){
                         fd_max = connfd;
                     sprintf(buff_write, "server: client %d just arrived\n", clients[connfd].id);
                     ft_send_to_all(connfd);
-                    // bzero(&cliaddr, sizeof(cliaddr));
                 }
+                // HANDLING EXISTING CLIENTS
                 else { // handle data from existing client
                     int rec = recv(fd_i, buff_read, 65536, 0);
                     if (rec <= 0) { // client has disconnected
