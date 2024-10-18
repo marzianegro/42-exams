@@ -80,7 +80,7 @@ int main(int ac, char **av) {
 	// to-do: argument check
 	if (ac != 2) {
 		write(2, "Wrong number of arguments\n", strlen("Wrong number of arguments\n"));
-		return (1);
+		exit(1);
 	}
 
 	// to-do: socket setup
@@ -91,7 +91,7 @@ int main(int ac, char **av) {
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
 	if (sockfd == -1) { 
 		write(2, "Fatal error\n", strlen("Fatal error\n"));
-		return (1);
+		exit(1);
 	} 
 	bzero(&servaddr, sizeof(servaddr)); 
 
@@ -103,11 +103,11 @@ int main(int ac, char **av) {
 	// Binding newly created socket to given IP and verification 
 	if ((bind(sockfd, (const struct sockaddr *)&servaddr, sizeof(servaddr))) != 0) { 
 		write(2, "Fatal error\n", strlen("Fatal error\n"));
-		return (1); 
+		exit(1); 
 	} 
 	if (listen(sockfd, 128) != 0) { // review: remember to change from 10 to 128
 		write(2, "Fatal error\n", strlen("Fatal error\n"));
-		return (1);
+		exit(1);
 	}
 
 	// to-do: initialization
