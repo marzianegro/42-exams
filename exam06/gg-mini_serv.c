@@ -72,8 +72,8 @@ int main(int ac, char **av){
     // MAIN LOOP
     while (42) {
         // INITIALIZATION
-        w_set = mem_set; // monitoring writable fds
         r_set = mem_set; // monitoring readable fds
+        w_set = mem_set; // monitoring writable fds
         if (select(fd_max + 1, &r_set, &w_set, NULL, NULL) < 0) // monitor multiple fds for readability and writability
             // note: wait for any of the fds to become ready for reading/writing + update r_set and w_set to indicate which fds are ready
             continue ; // on failure
