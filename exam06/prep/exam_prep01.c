@@ -117,7 +117,7 @@ int	main(int ac, char **av) {
 						} j++;
 					}
 				}
-			}
+			} break;
 		}
 	}
 }
